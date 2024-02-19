@@ -3,67 +3,137 @@
     <title>Functional Programming!</title>
   </head>
   <body style="background: #222222; color: #ffffff">
-    <h1>Functional programming challenges: Recursion</h1>
-    <ul>
-      <div id="challenge-1" style="border: solid black 1px">
+    <h1>Functional programming challenges</h1>
+    <details>
+      <summary>Recursion</summary>
+      <ul>
+        <div id="challenge-1" style="border: solid black 1px">
+          <h2>Challenge 1</h2>
+          <label>Implement a factorial function using recursion</label><br />
+          <input
+            type="text"
+            value="1"
+            class="input"
+            placeholder="Enter number here"
+          />
+          <p class="loop"></p>
+          <p class="recursion"></p>
+          <p class="status"></p>
+        </div>
+        <div id="challenge-2" style="border: solid black 1px">
+          <h2>Challenge 2</h2>
+          <label>Implement the fibonacci sequence using recursion</label><br />
+          <input
+            type="text"
+            value="1"
+            class="input"
+            placeholder="Enter number here"
+          />
+          <p class="loop"></p>
+          <p class="recursion"></p>
+          <p class="status"></p>
+        </div>
+        <div id="challenge-3" style="border: solid black 1px">
+          <h2>Challenge 3</h2>
+          <label
+            >Write a recursive function which takes a comma separated list of
+            integers, and calculates the total.
+          </label>
+          <input
+            type="text"
+            value="1"
+            class="input"
+            placeholder="Enter number here"
+          />
+          <p class="loop"></p>
+          <p class="recursion"></p>
+          <p class="status"></p>
+        </div>
+        <div id="challenge-4" style="border: solid black 1px">
+          <h2>Challenge 4</h2>
+          <label
+            >Write a function which takes an integer and returns an array which
+            contains all factors of said integer
+          </label>
+          <input
+            type="text"
+            value="1"
+            class="input"
+            placeholder="Enter number here"
+          />
+          <p class="loop"></p>
+          <p class="recursion"></p>
+          <p class="status"></p>
+        </div>
+      </ul>
+    </details>
+    <details>
+      <summary>Currying</summary>
+      <div id="currying-1">
         <h2>Challenge 1</h2>
-        <label>Implement a factorial function using recursion</label><br />
-        <input
-          type="text"
-          value="1"
-          class="input"
-          placeholder="Enter number here"
-        />
-        <p class="loop"></p>
-        <p class="recursion"></p>
-        <p class="status"></p>
+        <label
+          >Write a function using currying which takes a number as it's first
+          value and returns a function which takes a second number and
+          multiplies both of them together.</label
+        >
+        <div>
+          <h3>
+            This function will calculate the speed of a falling object after n
+            seconds.
+          </h3>
+          <input
+            type="text"
+            value="1"
+            class="input"
+            placeholder="Enter a value in kilograms here"
+          />
+          <p class="result"></p>
+        </div>
+        <div>
+          <h3>
+            This function will calculate the amount of south korean won bought
+            with an integer amount of euros.
+          </h3>
+          <input
+            type="text"
+            value="1"
+            class="input"
+            placeholder="Enter a number"
+          />
+          <p class="result"></p>
+        </div>
+        <div>
+          <h3>
+            This function will calculate the amount of pounds in a given
+            kilogram weight
+          </h3>
+          <input
+            type="text"
+            value="1"
+            class="input"
+            placeholder="Enter a number"
+          />
+          <p class="result"></p>
+        </div>
       </div>
-      <div id="challenge-2" style="border: solid black 1px">
+      <div id="currying-2">
         <h2>Challenge 2</h2>
-        <label>Implement the fibonacci sequence using recursion</label><br />
-        <input
-          type="text"
-          value="1"
-          class="input"
-          placeholder="Enter number here"
-        />
-        <p class="loop"></p>
-        <p class="recursion"></p>
-        <p class="status"></p>
-      </div>
-      <div id="challenge-3" style="border: solid black 1px">
-        <h2>Challenge 3</h2>
         <label
-          >Write a recursive function which takes a comma separated list of
-          integers, and calculates the total.
+          >Write a function which uses currying to create event handlers based
+          on the name of the button!<br />
+          The function should alert the text passed into it, plus the innerText
+          of the button!
         </label>
-        <input
-          type="text"
-          value="1"
-          class="input"
-          placeholder="Enter number here"
-        />
-        <p class="loop"></p>
-        <p class="recursion"></p>
-        <p class="status"></p>
+        <br />
+        <br />
+        Enter a prefix here:
+        <input class="input" type="text" />
+        <br />
+        <button>Functional</button>
+        <button>Programming</button>
+        <button>ROX</button>
       </div>
-      <div id="challenge-4" style="border: solid black 1px">
-        <h2>Challenge 4</h2>
-        <label
-          >Write a function which takes an integer and returns an array which
-          contains all factors of said integer
-        </label>
-        <input
-          type="text"
-          value="1"
-          class="input"
-          placeholder="Enter number here"
-        />
-        <p class="loop"></p>
-        <p class="recursion"></p>
-        <p class="status"></p>
-      </div>
-    </ul>
+    </details>
   </body>
   <script>
     var exports = {};

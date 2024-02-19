@@ -54,7 +54,36 @@ const clean_and_compute = (
   return [f1(sanitized), f2(sanitized)];
 };
 
-const init_challenge = (
+const init_currying_1 = (div: HTMLDivElement) => {
+  const nums: Array<number> = [9.8, 1437, 2.2];
+  const divs: NodeListOf<HTMLDivElement> = div.querySelectorAll("div");
+  divs.forEach((challenge: HTMLDivElement, i: number) => {
+    (challenge.querySelector(".input") as HTMLInputElement).oninput = (e) => {
+      (challenge.querySelector(".result") as HTMLParagraphElement).innerText =
+        "Result: " +
+        curry_multiplication(nums[i])(
+          parseInt((e.target as HTMLInputElement).value),
+        ).toString();
+    };
+  });
+};
+
+const init_currying_2 = (div: HTMLDivElement) => {
+  const input: HTMLInputElement | null = div.querySelector("input");
+  const buttons: NodeListOf<HTMLButtonElement> = div.querySelectorAll("button");
+  if (input) {
+    input.oninput = (e) => {
+      buttons.forEach(
+        (button: HTMLButtonElement) =>
+          (button.onclick = onclick_curry(
+            (e.target as HTMLInputElement).value,
+          )),
+      );
+    };
+  }
+};
+
+const init_recursive_challenge = (
   div: HTMLDivElement,
   func_loop: (x: any) => any,
   func_recursion: (x: any) => any,
@@ -105,12 +134,23 @@ const challenges: Array<HTMLDivElement> = [
   "challenge-4",
 ].map((id) => document.getElementById(id)) as Array<HTMLDivElement>;
 
-init_challenge(challenges[0], factorial_loop, factorial, parseInt);
-init_challenge(challenges[1], fibonacci_loop, fibonacci, parseInt);
-init_challenge(
+init_recursive_challenge(challenges[0], factorial_loop, factorial, parseInt);
+init_recursive_challenge(challenges[1], fibonacci_loop, fibonacci, parseInt);
+init_recursive_challenge(
   challenges[2],
   array_sum_loop,
   array_sum,
   (x: string): Array<number> => x.split(",").map(Number),
 );
-init_challenge(challenges[3], factors_loop, factors, parseInt);
+init_recursive_challenge(challenges[3], factors_loop, factors, parseInt);
+
+const curry_1: HTMLDivElement | null = document.getElementById(
+  "currying-1",
+) as HTMLDivElement;
+
+const curry_2: HTMLDivElement | null = document.getElementById(
+  "currying-2",
+) as HTMLDivElement;
+
+if (curry_1) init_currying_1(curry_1);
+if (curry_2) init_currying_2(curry_2);

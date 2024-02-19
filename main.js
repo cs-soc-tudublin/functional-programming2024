@@ -43,7 +43,29 @@ const clean_and_compute = (f1, f2, input, cleaner) => {
   const sanitized = cleaner(input);
   return [f1(sanitized), f2(sanitized)];
 };
-const init_challenge = (div, func_loop, func_recursion, cleaner) => {
+const init_currying_1 = (div) => {
+  const nums = [9.8, 1437, 2.2];
+  const divs = div.querySelectorAll("div");
+  divs.forEach((challenge, i) => {
+    challenge.querySelector(".input").oninput = (e) => {
+      challenge.querySelector(".result").innerText =
+        "Result: " +
+        curry_multiplication(nums[i])(parseInt(e.target.value)).toString();
+    };
+  });
+};
+const init_currying_2 = (div) => {
+  const input = div.querySelector("input");
+  const buttons = div.querySelectorAll("button");
+  if (input) {
+    input.oninput = (e) => {
+      buttons.forEach(
+        (button) => (button.onclick = onclick_curry(e.target.value)),
+      );
+    };
+  }
+};
+const init_recursive_challenge = (div, func_loop, func_recursion, cleaner) => {
   const input = div.querySelector(".input");
   const func_status = div.querySelector(".status");
   const loop_p = div.querySelector(".loop");
@@ -83,9 +105,13 @@ const challenges = [
   "challenge-3",
   "challenge-4",
 ].map((id) => document.getElementById(id));
-init_challenge(challenges[0], factorial_loop, factorial, parseInt);
-init_challenge(challenges[1], fibonacci_loop, fibonacci, parseInt);
-init_challenge(challenges[2], array_sum_loop, array_sum, (x) =>
+init_recursive_challenge(challenges[0], factorial_loop, factorial, parseInt);
+init_recursive_challenge(challenges[1], fibonacci_loop, fibonacci, parseInt);
+init_recursive_challenge(challenges[2], array_sum_loop, array_sum, (x) =>
   x.split(",").map(Number),
 );
-init_challenge(challenges[3], factors_loop, factors, parseInt);
+init_recursive_challenge(challenges[3], factors_loop, factors, parseInt);
+const curry_1 = document.getElementById("currying-1");
+const curry_2 = document.getElementById("currying-2");
+if (curry_1) init_currying_1(curry_1);
+if (curry_2) init_currying_2(curry_2);
